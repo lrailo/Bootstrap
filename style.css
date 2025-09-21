@@ -69,11 +69,6 @@ body {
     color: rgb(235, 185, 78) !important; /* Oranssi teksti */
 }
 
-/* Uusi tyyli kahvila-osiolle */
-#kahvila {
-    padding-top: 85px;
-}
-
 /* Kahvila-sivun kuvien tyylittely */
 .kuva {
     width: 100%;
@@ -87,12 +82,7 @@ body {
     /* Muuttaa tekstin väriä */
 }
 
-/* Uusi tyyli menu-osiolle */
-#menu {
-    padding-top: 70px;
-}
-
-/* Manu-osion korttiryhmän tyylittelyä*/
+/* Menu-osion korttiryhmän tyylittelyä*/
 .menu-cards .card {
     margin: 10px;
     /* Lisää tilaa korttien ympärille */
@@ -120,16 +110,6 @@ body {
     color: rgb(61, 94, 58);
 }
 
-/*Haitarin yläpuolelle tyhjää*/
-#haitari {
-    padding-top: 70px;
-}
-
-/*Yhteystietojen yläpuolelle tyhjää*/
-#yhteys {
-    padding-top: 70px;
-}
-
 /* Kohdennettu tyyli vain yhteystiedot-osion otsikoihin */
 #yhteys h2,
 #yhteys h3, 
@@ -143,6 +123,11 @@ body {
     background-color: rgb(61, 94, 58) !important;
 }
 
+/* Yhtenäinen scroll-margin kaikille osioille */
+#kahvila,
+#menu,
+#haitari,
+#yhteys,
 #ajankohtaista {
-    padding-top: 70px;
+    scroll-margin-top: 100px; /* navbarin korkeus */
 }
