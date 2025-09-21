@@ -62,9 +62,10 @@ body {
     cursor: grab;
 }
 
-/* aktiivisen linkin näyttäminen värin muutoksella*/
+/* Aktiivisen linkin värin ja taustan määritys */
 .nav-link.active {
-    color: rgb(235, 185, 78) !important;
+    background-color: rgb(100, 137, 100) !important; /* Tummempi taustaväri */
+    color: rgb(235, 185, 78) !important; /* Oranssi teksti */
 }
 
 /* Uusi tyyli kahvila-osiolle */
