@@ -130,4 +130,6 @@ body {
 #yhteys,
 #ajankohtaista {
     scroll-margin-top: 100px; /* navbarin korkeus */
+    padding-top: 70px;         /* yläreuna näkyvyyttä varten */
+    padding-bottom: 20px;      /* alareuna näkyvyyttä varten */
 }
