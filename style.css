@@ -1,0 +1,146 @@
+/* bodyn määritys*/
+body {
+    position: relative;
+    font-family: "Georgia", serif;
+}
+
+/* karusellin kuvien responsiivisuus*/
+.carousel-inner img {
+    width: 100%;
+    /* Aseta 100%, jotta skaalautuu ja täyttää karusellin kokonaan  */
+    margin: auto;
+    min-height: 200px;
+}
+
+/* sliderin leveyden säätö*/
+#demo {
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    margin-top: 70px;
+    /* ylämarginaali karusellille, muista jättää viimeiseksi #demo-säännöksi, tai käytä !important*/
+}
+
+
+/* taustan väri */
+.navbar-custom {
+    background-color: rgb(61, 94, 58);
+}
+
+/* brandin ja tekstin väri */
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+    color: rgba(241, 236, 236, 0.8);
+}
+
+/* linkin väri */
+.navbar-custom .navbar-nav .nav-link {
+    color: rgba(156, 160, 157, 0.8);
+}
+
+/* aktiivisen & hover-linkin väri */
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+    color: #ffffff;
+}
+
+/* hampurilaisvalikon kuvakkeen väri ja läpinäkyvyys - lisäsin vielä .navbar-toggler, jotta sain näkyviin koko hampurilaisvalikon */
+.navbar-toggler .custom-toggler .navbar-toggler-icon {
+    /*lisäsin aluksi myös .navbar-custom, mutta valikko näkyy myös ilman tätä */
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke=" rgba(241, 236, 236, 0.8)" stroke-width='2' stroke-linecap='round'stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+/* hampurilaisvalikolle kehys */
+.custom-toggler.navbar-toggler {
+    border-color: rgba(241, 236, 236, 0.2);
+}
+
+/* alasvetovalikon tekstin värin, taustavärin vaihto important-komennolla, lisäksi kursorin valinta */
+.nav-item .dropdown-menu a:hover {
+    color: whitesmoke !important;
+    background: rgb(100, 137, 100) !important;
+    cursor: grab;
+}
+
+/* aktiivisen linkin näyttäminen värin muutoksella*/
+.nav-link.active {
+    color: rgb(235, 185, 78) !important;
+}
+
+/* Uusi tyyli kahvila-osiolle */
+#kahvila {
+    padding-top: 70px;
+}
+
+/* Kahvila-sivun kuvien tyylittely */
+.kuva {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 27% 0 27% 0;
+}
+
+.tekstipalsta {
+    padding-top: 50px;
+    color: rgb(61, 94, 58);
+    /* Muuttaa tekstin väriä */
+}
+
+/* Uusi tyyli menu-osiolle */
+#menu {
+    padding-top: 70px;
+}
+
+/* Manu-osion korttiryhmän tyylittelyä*/
+.menu-cards .card {
+    margin: 10px;
+    /* Lisää tilaa korttien ympärille */
+}
+
+.menu-cards .card-title {
+    color: #3d5e3a;
+    /* Muuttaa otsikon värin */
+}
+
+/* Haitarin otsikon taustaväri sopimaan navigaatiopalkkiin */
+.accordion-header .accordion-button {
+    background-color: rgb(61, 94, 58) !important;
+    color: rgba(241, 236, 236, 0.8) !important;
+}
+
+/* Haitarin painikkeen hover-efekti */
+.accordion-header .accordion-button:hover {
+    background: rgb(100, 137, 100) !important;
+    color: #ffffff !important;
+}
+
+/* Haitarin sisällön tyylittely sopimaan tekstipalkkiin */
+.accordion-body {
+    color: rgb(61, 94, 58);
+}
+
+/*Haitarin yläpuolelle tyhjää*/
+#haitari {
+    padding-top: 70px;
+}
+
+/*Yhteystietojen yläpuolelle tyhjää*/
+#yhteys {
+    padding-top: 70px;
+}
+
+/* Kohdennettu tyyli vain yhteystiedot-osion otsikoihin */
+#yhteys h2,
+#yhteys h3, 
+#hinnasto h2,
+#ajankohtaista h2 {
+    color: rgb(61, 94, 58);
+}
+
+/* Kohdennettu väri jumbotronille */
+.bg-custom {
+    background-color: rgb(61, 94, 58) !important;
+}
+
+#ajankohtaista {
+    padding-top: 70px;
+}
