@@ -13,13 +13,13 @@
 
 <!-- navigaatiopalkki -->
 
-<body data-bs-spy="scroll" data-bs-target="#collapsibleNavbar" data-bs-offset="100">
+<body data-bs-spy="scroll" data-bs-target="#navItems" data-bs-offset="100">
     <main class="container" id="etusivu">
         <!-- navbar-expand-md = medium eli laajentaa navigaatiopalkin keskikokoisilla näytöillä 
          fixed-top kiinnittää palkin yläreunaan.. 
          jos poistan navbar-dark, ei valikon värin määritys toimi
          custom = navbarille omat määritykset CSS:n puolella-->
-        <nav class="navbar navbar-expand-md navbar-dark navbar-custom  fixed-top">
+        <nav class="navbar navbar-expand-md navbar-dark navbar-custom fixed-top">
             <div class="container-fluid">
                 <!-- alla valikkopalkin teksti ja lisätään kuva-->
                 <a class="navbar-brand" href="#etusivu"><img src="kahvilahetki.png" alt="Logo Kahvila Hetki"
@@ -66,7 +66,8 @@
 
             <!-- Indikaattorit, pisteet -->
             <div class="carousel-indicators">
-                <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active" aria-label="Siirry kuvaan 1"></button>
+                <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"
+                    aria-label="Siirry kuvaan 1"></button>
                 <button type="button" data-bs-target="#demo" data-bs-slide-to="1" aria-label="Siirry kuvaan 2"></button>
                 <button type="button" data-bs-target="#demo" data-bs-slide-to="2" aria-label="Siirry kuvaan 3"></button>
                 <button type="button" data-bs-target="#demo" data-bs-slide-to="3" aria-label="Siirry kuvaan 4"></button>
@@ -105,10 +106,12 @@
             </div>
 
             <!-- vasemmalle ja oikealle kontrollointi/ikonit -->
-            <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev" aria-label="Edellinen">
+            <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev"
+                aria-label="Edellinen">
                 <span class="carousel-control-prev-icon"></span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next" aria-label="Seuraava">
+            <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next"
+                aria-label="Seuraava">
                 <span class="carousel-control-next-icon"></span>
             </button>
         </div>
@@ -291,86 +294,85 @@
                 </tbody>
             </table>
         </div>
+    </div>
+
+    <div class="container mt-3 text-center" id="ajankohtaista">
+        <h2>Ajankohtaista</h2>
+        <div class="mt-4 p-5 bg-custom text-white rounded">
+            <h1>Tällä viikolla</h1>
+            <p>Kaksi korvapuustia yhden hinnalla, kun ostat erikoiskahvin.</p>
         </div>
+    </div>
 
-        <div class="container mt-3 text-center" id="ajankohtaista">
-            <h2>Ajankohtaista</h2>
-            <div class="mt-4 p-5 bg-custom text-white rounded">
-                <h1>Tällä viikolla</h1>
-                <p>Kaksi korvapuustia yhden hinnalla, kun ostat erikoiskahvin.</p>
-            </div>
-        </div>
+    <!-- Bootstrap JS bundle (siirretty body:n loppuun) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-        <!-- Bootstrap JS bundle (siirretty body:n loppuun) -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Oma skripti: avaa dropdown, rullaa #menu kun klikataan Menua, ja avaa/scrollaa haitariin dropdown-kohdista -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const navbar = document.querySelector('.navbar');
+            const navHeight = navbar ? navbar.offsetHeight : 0;
 
+            function smoothScrollTo(element, offset = 10) {
+                const top = element.getBoundingClientRect().top + window.pageYOffset - navHeight - offset;
+                window.scrollTo({ top: top, behavior: 'smooth' });
+            }
 
-        <!-- Oma skripti: avaa dropdown, rullaa #menu kun klikataan Menua, ja avaa/scrollaa haitariin dropdown-kohdista -->
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                const navbar = document.querySelector('.navbar');
-                const navHeight = navbar ? navbar.offsetHeight : 0;
+            // MENU: kun klikataan dropdown-togglea, näytetään dropdown ja rullataan #menu-kohdan kohdalle
+            const menuToggle = document.getElementById('menuDropdown');
+            if (menuToggle) {
+                menuToggle.addEventListener('click', function (e) {
+                    // estetään oletusselaimen ankkuriloikka (jotta scroll on smooth ja dropdownin avaus hallittu)
+                    e.preventDefault();
 
-                function smoothScrollTo(element, offset = 10) {
-                    const top = element.getBoundingClientRect().top + window.pageYOffset - navHeight - offset;
-                    window.scrollTo({ top: top, behavior: 'smooth' });
-                }
+                    // Avaa dropdown (Bootstrap API)
+                    const bsDropdown = bootstrap.Dropdown.getOrCreateInstance(menuToggle);
+                    bsDropdown.show();
 
-                // MENU: kun klikataan dropdown-togglea, näytetään dropdown ja rullataan #menu-kohdan kohdalle
-                const menuToggle = document.getElementById('menuDropdown');
-                if (menuToggle) {
-                    menuToggle.addEventListener('click', function (e) {
-                        // estetään oletusselaimen ankkuriloikka (jotta scroll on smooth ja dropdownin avaus hallittu)
-                        e.preventDefault();
-
-                        // Avaa dropdown (Bootstrap API)
-                        const bsDropdown = bootstrap.Dropdown.getOrCreateInstance(menuToggle);
-                        bsDropdown.show();
-
-                        // Rullaa #menu-kohdan kohdalle
-                        const menuEl = document.getElementById('menu');
-                        if (menuEl) {
-                            // pieni viive jotta dropdown voi aueta visuaalisesti
-                            setTimeout(() => smoothScrollTo(menuEl, 8), 80);
-                        }
-                    });
-                }
-
-                // Dropdownin kohdat: avaa vastaava haitari-osa ja rullaa siihen
-                document.querySelectorAll('.dropdown-item[href^="#haitari"]').forEach(item => {
-                    item.addEventListener('click', function (e) {
-                        e.preventDefault();
-                        const targetId = this.getAttribute('href');
-                        if (!targetId) return;
-
-                        const collapseEl = document.querySelector(targetId);
-                        if (!collapseEl) return;
-
-                        // Avaa collapse (Bootstrapin Collapse API)
-                        const bsCollapse = bootstrap.Collapse.getOrCreateInstance(collapseEl);
-                        bsCollapse.show();
-
-                        // Sulje dropdown
-                        const dropdownEl = this.closest('.dropdown');
-                        if (dropdownEl) {
-                            const toggle = dropdownEl.querySelector('.dropdown-toggle');
-                            if (toggle) {
-                                const bsDropdown = bootstrap.Dropdown.getOrCreateInstance(toggle);
-                                bsDropdown.hide();
-                            }
-                        }
-
-                        // Rullaa auki olevan accordion headerin kohtaan (jos löydetään), muuten collapse-elementtiin
-                        const targetIdNoHash = targetId.replace('#', '');
-                        const headerBtn = document.querySelector('.accordion-button[aria-controls="' + targetIdNoHash + '"]');
-                        const scrollEl = headerBtn || collapseEl;
-
-                        setTimeout(() => smoothScrollTo(scrollEl, 8), 160);
-                    });
+                    // Rullaa #menu-kohdan kohdalle
+                    const menuEl = document.getElementById('menu');
+                    if (menuEl) {
+                        // pieni viive jotta dropdown voi aueta visuaalisesti
+                        setTimeout(() => smoothScrollTo(menuEl, 8), 80);
+                    }
                 });
+            }
 
+            // Dropdownin kohdat: avaa vastaava haitari-osa ja rullaa siihen
+            document.querySelectorAll('.dropdown-item[href^="#haitari"]').forEach(item => {
+                item.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (!targetId) return;
+
+                    const collapseEl = document.querySelector(targetId);
+                    if (!collapseEl) return;
+
+                    // Avaa collapse (Bootstrapin Collapse API)
+                    const bsCollapse = bootstrap.Collapse.getOrCreateInstance(collapseEl);
+                    bsCollapse.show();
+
+                    // Sulje dropdown
+                    const dropdownEl = this.closest('.dropdown');
+                    if (dropdownEl) {
+                        const toggle = dropdownEl.querySelector('.dropdown-toggle');
+                        if (toggle) {
+                            const bsDropdown = bootstrap.Dropdown.getOrCreateInstance(toggle);
+                            bsDropdown.hide();
+                        }
+                    }
+
+                    // Rullaa auki olevan accordion headerin kohtaan (jos löydetään), muuten collapse-elementtiin
+                    const targetIdNoHash = targetId.replace('#', '');
+                    const headerBtn = document.querySelector('.accordion-button[aria-controls="' + targetIdNoHash + '"]');
+                    const scrollEl = headerBtn || collapseEl;
+
+                    setTimeout(() => smoothScrollTo(scrollEl, 8), 160);
+                });
             });
-        </script>
+
+        });
+    </script>
 
 </body>
 
