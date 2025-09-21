@@ -30,7 +30,7 @@ body {
 /* brandin ja tekstin väri */
 .navbar-custom .navbar-brand,
 .navbar-custom .navbar-text {
-    color: rgba(241, 236, 236, 0.8);
+    color: rgba(241, 236, 236, 1.0);
 }
 
 /* linkin väri */
